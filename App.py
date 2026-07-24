@@ -1,5 +1,132 @@
+import os
 import streamlit as st
+import numpy as np
+from tensorflow.keras.preprocessing import image
+from PIL import Image, UnidentifiedImageError
 
-st.title("Healthy Tomato vs. Tomato Early Blight Classifier")
-st.write("Group CO17 Mini-Project - GET 324")
+# Page config
+st.set_page_config(page_title="Tomato Leaf Health Classifier", page_icon="🍅", layout="centered")
 
+MODEL_PATH = "model/tomato_model.h5"
+IMG_SIZE = (224, 224)
+# This must match the class_indices printed at the end of the training notebook
+CLASS_NAMES = ["early_blight", "healthy"]  # index 0 -> early_blight, index 1 -> healthy
+
+# Sidebar
+with st.sidebar:
+    st.header("About this project")
+    st.write(
+        "**GET 324 Mini-Project**\n\n"
+        "Group CO17\n\n"
+        "Task: Healthy Tomato Leaf vs Tomato Early Blight"
+    )
+    st.markdown("---")
+    st.write("**How it works**")
+    st.write(
+        "1. Upload a tomato leaf photo (or try a sample below)\n"
+        "2. The model resizes and normalizes the image\n"
+        "3. A MobileNetV2-based CNN predicts Healthy vs Early Blight\n"
+        "4. You get a label plus a confidence score"
+    )
+    st.markdown("---")
+    st.caption("Model: MobileNetV2 transfer learning, trained on the PlantVillage dataset.")
+
+st.title("🍅 Tomato Leaf Health Classifier")
+st.write(
+    "Upload a photo of a tomato leaf and the model will predict whether it is "
+    "**Healthy** or shows signs of **Early Blight**."
+)
+# Load model (cached so it only loads once), with graceful error handling
+@st.cache_resource
+def get_model():
+    from tensorflow.keras.models import load_model
+    return load_model(MODEL_PATH)
+
+model = None
+model_load_error = None
+
+if not os.path.exists(MODEL_PATH):
+    model_load_error = (
+        f"Model file not found at `{MODEL_PATH}`. Train the model using "
+        "`notebooks/train_model.ipynb` and make sure `tomato_model.h5` is saved "
+        "into the `model/` folder before running this app."
+    )
+else:
+    try:
+        model = get_model()
+    except Exception as e:
+        model_load_error = f"Failed to load the model: {e}"
+
+if model_load_error:
+    st.error(model_load_error)
+    st.stop()
+
+# Sample images (optional quick-test gallery)
+# Place a few sample images in a "samples/" folder next to app.py, e.g.:
+#   samples/healthy_1.jpg, samples/early_blight_1.jpg
+SAMPLES_DIR = "samples"
+sample_choice = None
+
+if os.path.isdir(SAMPLES_DIR):
+    sample_files = [f for f in os.listdir(SAMPLES_DIR) if f.lower().endswith((".jpg", ".jpeg", ".png"))]
+    if sample_files:
+        st.write("**Or try a sample image:**")
+        cols = st.columns(len(sample_files))
+        for col, fname in zip(cols, sample_files):
+            with col:
+                st.image(os.path.join(SAMPLES_DIR, fname), use_container_width=True)
+                if st.button(fname.split(".")[0].replace("_", " ").title(), key=f"sample_{fname}"):
+                    sample_choice = os.path.join(SAMPLES_DIR, fname)
+
+st.markdown("---")
+
+# Image upload + prediction
+uploaded_file = st.file_uploader("Upload a tomato leaf image", type=["jpg", "jpeg", "png"])
+
+image_source = uploaded_file if uploaded_file is not None else sample_choice
+
+if image_source is not None:
+    try:
+        img = Image.open(image_source).convert("RGB")
+    except UnidentifiedImageError:
+        st.error("That file doesn't look like a valid image. Please try a different JPG or PNG.")
+        st.stop()
+    except Exception as e:
+        st.error(f"Couldn't open that image: {e}")
+        st.stop()
+
+    st.image(img, caption="Selected image", use_container_width=True)
+
+    # Preprocess to match training pipeline
+    img_resized = img.resize(IMG_SIZE)
+    img_array = image.img_to_array(img_resized) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+
+    if st.button("Classify Leaf"):
+        try:
+            with st.spinner("Analyzing image..."):
+                prediction = model.predict(img_array)[0][0]  # sigmoid output, 0-1
+
+                # prediction close to 1 -> healthy (per class_indices), close to 0 -> early_blight
+                if prediction > 0.5:
+                    label = "Healthy"
+                    confidence = prediction
+                else:
+                    label = "Early Blight"
+                    confidence = 1 - prediction
+        except Exception as e:
+            st.error(f"Prediction failed: {e}")
+            st.stop()
+
+        st.subheader("Result")
+        if label == "Healthy":
+            st.success(f"✅ {label} — confidence: {confidence * 100:.2f}%")
+        else:
+            st.error(f"⚠️ {label} — confidence: {confidence * 100:.2f}%")
+
+        st.progress(float(confidence))
+
+st.markdown("---")
+st.caption(
+    "Built for GET 324 Lab Exercise 10 (Mini-Project) — Group CO17."
+)
