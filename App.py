@@ -9,8 +9,8 @@ st.set_page_config(page_title="TOMATO LEAF HEALTH CLASSIFIER", page_icon="🍅",
 
 MODEL_PATH = "model/tomato_model.h5"
 IMG_SIZE = (224, 224)
-# This must match the class_indices printed at the end of the training notebook
-CLASS_NAMES = ["early_blight", "healthy"]  # index 0 -> early_blight, index 1 -> healthy
+# This must match the class_names printed at the end of the training notebook
+CLASS_NAMES = ["Early Blight", "Healthy"]  # index 0 -> Tomato_Early_blight, index 1 -> Tomato_healthy
 
 # Sidebar
 with st.sidebar:
@@ -100,21 +100,16 @@ if image_source is not None:
 
     # Preprocess to match training pipeline
     img_resized = img.resize(IMG_SIZE)
-    img_array = image.img_to_array(img_resized) / 255.0
+    img_array = image.img_to_array(img_resized)  # keep raw 0-255 values — the model rescales internally
     img_array = np.expand_dims(img_array, axis=0)
 
     if st.button("Classify Leaf"):
         try:
             with st.spinner("Analyzing image..."):
-                prediction = model.predict(img_array)[0][0]  # sigmoid output, 0-1
-
-                # prediction close to 1 -> healthy (per class_indices), close to 0 -> early_blight
-                if prediction > 0.5:
-                    label = "Healthy"
-                    confidence = prediction
-                else:
-                    label = "Early Blight"
-                    confidence = 1 - prediction
+                probs = model.predict(img_array)[0]  # two numbers: [P(early blight), P(healthy)]
+                pred_idx = int(np.argmax(probs))
+                label = CLASS_NAMES[pred_idx]
+                confidence = float(probs[pred_idx])
         except Exception as e:
             st.error(f"Prediction failed: {e}")
             st.stop()
