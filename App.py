@@ -32,7 +32,7 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Model: MobileNetV2 transfer learning, trained on the PlantVillage dataset.")
 
-st.title("🍅 TOMATO LEAF HEALTH CLASSIFIER")
+st.title("🍅TOMATO LEAF HEALTH CLASSIFIER")
 st.write(
     "Upload a photo of a tomato leaf and the model will predict whether it is "
     "**Healthy** or shows signs of **Early Blight**."
@@ -90,7 +90,7 @@ if image_source is not None:
     try:
         img = Image.open(image_source).convert("RGB")
     except UnidentifiedImageError:
-        st.error("That file doesn't look like a valid image. Please try a different JPG or PNG.")
+        st.error("The uploaded file doesn't look like a valid image. Please try a different JPG or PNG.")
         st.stop()
     except Exception as e:
         st.error(f"Couldn't open that image: {e}")
