@@ -18,7 +18,7 @@ with st.sidebar:
     st.write(
         "**GET 324 Mini-Project**\n\n"
         "Group CO17\n\n"
-        "COMPUTER ENGINEERING"
+        "COMPUTER ENGINEERING\n\n"
         "TASK: Healthy Tomato Leaf vs Tomato Early Blight"
     )
     st.markdown("---")
