@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing import image
 from PIL import Image, UnidentifiedImageError
 
 # Page config
-st.set_page_config(page_title="Tomato Leaf Health Classifier", page_icon="🍅", layout="centered")
+st.set_page_config(page_title="TOMATO LEAF HEALTH CLASSIFIER", page_icon="🍅", layout="centered")
 
 MODEL_PATH = "model/tomato_model.h5"
 IMG_SIZE = (224, 224)
@@ -14,14 +14,15 @@ CLASS_NAMES = ["early_blight", "healthy"]  # index 0 -> early_blight, index 1 ->
 
 # Sidebar
 with st.sidebar:
-    st.header("About this project")
+    st.header("ABOUT THIS PROJECT")
     st.write(
         "**GET 324 Mini-Project**\n\n"
         "Group CO17\n\n"
-        "Task: Healthy Tomato Leaf vs Tomato Early Blight"
+        "COMPUTER ENGINEERING"
+        "TASK: Healthy Tomato Leaf vs Tomato Early Blight"
     )
     st.markdown("---")
-    st.write("**How it works**")
+    st.write("**HOW IT WORKS**")
     st.write(
         "1. Upload a tomato leaf photo (or try a sample below)\n"
         "2. The model resizes and normalizes the image\n"
@@ -31,7 +32,7 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Model: MobileNetV2 transfer learning, trained on the PlantVillage dataset.")
 
-st.title("🍅 Tomato Leaf Health Classifier")
+st.title("🍅 TOMATO LEAF HEALTH CLASSIFIER")
 st.write(
     "Upload a photo of a tomato leaf and the model will predict whether it is "
     "**Healthy** or shows signs of **Early Blight**."
