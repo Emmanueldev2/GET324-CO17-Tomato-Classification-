@@ -43,7 +43,7 @@ etiuwemc
 - 22/EG/CO/1778  Asuquo, Bassey Bassey 
             Patrick7002
 - 22/EG/CO/1728        CHARLES JOSHUA ABASIAKAMA.      horfixialindustry2022
-              
+- 22/EG/CO/1798        MBANG STEPHEN UKEME             stephenmbang03-dev        
   
 
 ## Report
