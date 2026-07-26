@@ -39,7 +39,11 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 - 22/EG/CO/1698      OKON, EKEMINI BASSEY.               ekeminiokon888-max
 - 22/EG/CO/1648      BASSEY, JOSEPH BONIFACE             22EGCO1648
 - 22/EG/CO/1758 Clement, Etiuwem Ekong
-            etiuwemc 
+etiuwemc
+- 22/EG/CO/1778  Asuquo, Bassey Bassey 
+            Patrick7002
+              
+  
 
 ## Report
 _(100–150 words: dataset source, how to use the app, challenges encountered and how they were resolved)_
