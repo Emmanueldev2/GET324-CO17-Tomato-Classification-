@@ -42,6 +42,7 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 etiuwemc
 - 22/EG/CO/1778  Asuquo, Bassey Bassey 
             Patrick7002
+- 22/EG/CO/1728        CHARLES JOSHUA ABASIAKAMA.      horfixialindustry2022
               
   
 
