@@ -35,15 +35,14 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 
 ## Team
 - REG NUMBER         NAME                                GITHUB ID
-- 22/EG/CO/1768      EDET, EMMANUEL MICHAEL              emmanueldev2
-- 22/EG/CO/1698      OKON, EKEMINI BASSEY.               ekeminiokon888-max
-- 22/EG/CO/1648      BASSEY, JOSEPH BONIFACE             22EGCO1648
-- 22/EG/CO/1758 Clement, Etiuwem Ekong
-etiuwemc
-- 22/EG/CO/1778  Asuquo, Bassey Bassey 
-            Patrick7002
-- 22/EG/CO/1728        CHARLES JOSHUA ABASIAKAMA.      horfixialindustry2022
-- 22/EG/CO/1798        MBANG STEPHEN UKEME             stephenmbang03-dev        
+- 22/EG/CO/1768      EDET, EMMANUEL MICHAEL          emmanueldev2
+- 22/EG/CO/1698      OKON, EKEMINI BASSEY.           ekeminiokon888-max
+- 22/EG/CO/1648      BASSEY, JOSEPH BONIFACE         22EGCO1648
+- 22/EG/CO/1758      Clement, Etiuwem Ekong          etiuwemc
+- 22/EG/CO/1778      Asuquo, Bassey Bassey           Patrick7002
+- 22/EG/CO/1728      CHARLES JOSHUA ABASIAKAMA       horfixialindustry2022
+- 22/EG/CO/1798      MBANG STEPHEN UKEME             stephenmbang03-dev
+- 22/EG/CO/1738      JAMES, PRAISE ATING             praizo001
   
 
 ## Report
