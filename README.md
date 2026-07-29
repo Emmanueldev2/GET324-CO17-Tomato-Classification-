@@ -46,4 +46,6 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
   
 
 ## Report
-_(100–150 words: dataset source, how to use the app, challenges encountered and how they were resolved)_
+_For this project, our group worked on classifying tomato leaves as either healthy or affected by early blight. We used the PlantVillage dataset from Kaggle, containing 1,591 healthy tomato images and 1,000 early blight images. Data was split into 80% training, 10% validation, and 10% testing. We trained a MobileNetV2 transfer learning model in Google Colab, reaching 99.23% accuracy on the test set. The model was deployed with Streamlit so users can upload a leaf image and get a prediction with a confidence score.
+
+One challenge was setting up Kaggle API authentication in Colab, which took troubleshooting. We also had a deployment error where the model failed to load due to an incompatible layer, fixed by rebuilding the preprocessing step. A further bug was found after deployment: the app misread the model's output, mislabeling early blight as healthy. This was fixed by correcting how predictions were interpreted. Future improvement could include adding a third class for unknown images._
