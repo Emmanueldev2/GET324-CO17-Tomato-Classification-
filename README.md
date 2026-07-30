@@ -43,6 +43,8 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 - 22/EG/CO/1728      CHARLES JOSHUA ABASIAKAMA       horfixialindustry2022
 - 22/EG/CO/1798      MBANG STEPHEN UKEME             stephenmbang03-dev
 - 22/EG/CO/1738      JAMES, PRAISE ATING             praizo001
+- 22/EG/CO/1688      Otung Andikan Bernard           Andy-240
+- 22/EG/CO/1658      Effiong Emmanuel Efiom          Emantana
   
 
 ## Report
