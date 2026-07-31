@@ -7,7 +7,7 @@ from PIL import Image, UnidentifiedImageError
 # Page config
 st.set_page_config(page_title="TOMATO LEAF HEALTH CLASSIFIER", page_icon="🍅", layout="centered")
 
-MODEL_PATH = "model/tomato_model.h5"
+MODEL_PATH = "model/co17_mobilenetv2_finetuned.keras"
 IMG_SIZE = (224, 224)
 # This must match the class_names printed at the end of the training notebook
 CLASS_NAMES = ["Early Blight", "Healthy"]  # index 0 -> Tomato_Early_blight, index 1 -> Tomato_healthy
@@ -49,7 +49,7 @@ model_load_error = None
 if not os.path.exists(MODEL_PATH):
     model_load_error = (
         f"Model file not found at `{MODEL_PATH}`. Train the model using "
-        "`notebooks/train_model.ipynb` and make sure `tomato_model.h5` is saved "
+        "`notebooks/train_model.ipynb` and make sure the trained model file is saved "
         "into the `model/` folder before running this app."
     )
 else:
