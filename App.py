@@ -8,7 +8,7 @@ from PIL import Image, UnidentifiedImageError
 st.set_page_config(page_title="TOMATO LEAF HEALTH CLASSIFIER", page_icon="🍅", layout="centered")
 
 MODEL_PATH = "model/co17_mobilenetv2_finetuned.keras"
-IMG_SIZE = (224, 224)
+IMG_SIZE = (128, 128)
 # This must match the class_names printed at the end of the training notebook
 CLASS_NAMES = ["Early Blight", "Healthy"]  # index 0 -> Tomato_Early_blight, index 1 -> Tomato_healthy
 
