@@ -45,6 +45,7 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 - 22/EG/CO/1738      JAMES, PRAISE ATING             praizo001
 - 22/EG/CO/1688      Otung Andikan Bernard           Andy-240
 - 22/EG/CO/1658      Effiong Emmanuel Efiom          Emantana
+- 22/EG/CO/1788      Dare Oluwaseyi David          alayeseyi 
   
 
 ## Report
