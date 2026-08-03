@@ -9,7 +9,7 @@ st.set_page_config(page_title="TOMATO LEAF HEALTH CLASSIFIER", page_icon="🍅",
 
 MODEL_PATH = "model/co17_mobilenetv2_finetuned.keras"
 IMG_SIZE = (128, 128)
-# This must match the class_names printed at the end of the training notebook
+# This should match the class_names printed at the end of the training notebook
 CLASS_NAMES = ["Early Blight", "Healthy"]  # index 0 -> Tomato_Early_blight, index 1 -> Tomato_healthy
 
 # Sidebar
