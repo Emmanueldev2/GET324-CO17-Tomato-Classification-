@@ -46,7 +46,7 @@ Deployed on Streamlit Community Cloud: `https://get324-co17-tomato-classificatio
 - 22/EG/CO/1738      JAMES, PRAISE ATING             praizo001
 - 22/EG/CO/1688      Otung Andikan Bernard           Andy-240
 - 22/EG/CO/1658      Effiong Emmanuel Efiom          Emantana
- 
+- 22/EG/CO/1808      ETIM, ABASI-IKPONGKE EDET        Spunky272
 
 ## Report
 _For this project, our group worked on classifying tomato leaves as either healthy or affected by early blight. We used the PlantVillage dataset from Kaggle, containing 1,591 healthy tomato images and 1,000 early blight images. Data was split into 80% training, 10% validation, and 10% testing. We trained a MobileNetV2 transfer learning model in Google Colab, reaching 99.23% accuracy on the test set. The model was deployed with Streamlit so users can upload a leaf image and get a prediction with a confidence score.
